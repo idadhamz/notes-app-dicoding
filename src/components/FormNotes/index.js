@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import FormInput from "./FormInput";
+
 export class FormNotes extends Component {
   constructor(props) {
     super(props);
@@ -47,6 +49,7 @@ export class FormNotes extends Component {
     this.props.addNotesHandler({ title, body });
 
     this.setState({
+      maxTitleLength: 50,
       title: "",
       body: "",
     });
@@ -61,28 +64,13 @@ export class FormNotes extends Component {
         <p className="note-input__title__char-limit">
           Sisa Karakter : {maxTitleLength}
         </p>
-        <form className="note-input__body" onSubmit={this.onSubmitFormHandler}>
-          <input
-            type="text"
-            name="title"
-            id="title"
-            value={title}
-            onChange={this.onTitleFormHandler}
-            placeholder="Title"
-            className="note-input__title"
-          />
-
-          <textarea
-            name="body"
-            id="body"
-            value={body}
-            onChange={this.onBodyFormHandler}
-            placeholder="Body"
-            className="note-input__body"
-          />
-
-          <button type="submit">Buat</button>
-        </form>
+        <FormInput
+          title={title}
+          body={body}
+          onTitleFormHandler={this.onTitleFormHandler}
+          onBodyFormHandler={this.onBodyFormHandler}
+          onSubmitFormHandler={this.onSubmitFormHandler}
+        />
       </div>
     );
   }

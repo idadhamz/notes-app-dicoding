@@ -50,7 +50,7 @@ export class App extends Component {
             title,
             body,
             archived: false,
-            createdAt: +new Date(),
+            createdAt: new Date().toISOString(),
           },
         ],
       };
